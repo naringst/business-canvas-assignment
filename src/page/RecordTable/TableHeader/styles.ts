@@ -5,7 +5,9 @@ export const TableHeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  padding: 8px 14px;
+  height: 48px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.colorSplit};
 `;
 
 export const TableHeaderTitle = styled.h2`

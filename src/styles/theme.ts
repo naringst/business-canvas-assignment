@@ -3,6 +3,7 @@ export const theme = {
     colorTextTertiary: 'rgba(0, 0, 0, 0.45)',
     colorBgMask: 'rgba(0, 0, 0, 0.45)',
     colorBgContainer: '#fff',
+    colorSplit: 'rgba(0,0,0,0.06)',
     button: {
       colorPrimary: '#4a7cfe',
     },

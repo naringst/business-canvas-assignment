@@ -6,6 +6,7 @@ declare module 'styled-components' {
       colorTextTertiary: string;
       colorBgMask: string;
       colorBgContainer: string;
+      colorSplit: string;
       button: {
         colorPrimary: string;
       };
