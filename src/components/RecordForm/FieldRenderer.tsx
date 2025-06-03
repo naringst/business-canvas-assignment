@@ -33,7 +33,7 @@ export const FieldRenderer = ({ field, control }: FieldRendererProps) => {
       return (
         <Controller
           key={data_index}
-          name={title}
+          name={data_index}
           control={control}
           render={({ field, fieldState: { error } }) => (
             <Form.Item
@@ -51,7 +51,7 @@ export const FieldRenderer = ({ field, control }: FieldRendererProps) => {
       return (
         <Controller
           key={data_index}
-          name={title}
+          name={data_index}
           control={control}
           render={({ field, fieldState: { error } }) => (
             <Form.Item
@@ -69,7 +69,7 @@ export const FieldRenderer = ({ field, control }: FieldRendererProps) => {
       return (
         <Controller
           key={data_index}
-          name={title}
+          name={data_index}
           control={control}
           render={({ field, fieldState: { error } }) => (
             <Form.Item
@@ -92,7 +92,7 @@ export const FieldRenderer = ({ field, control }: FieldRendererProps) => {
       return (
         <Controller
           key={data_index}
-          name={title}
+          name={data_index}
           control={control}
           render={({ field }) => (
             <Form.Item>
@@ -107,7 +107,7 @@ export const FieldRenderer = ({ field, control }: FieldRendererProps) => {
       return (
         <Controller
           key={data_index}
-          name={title}
+          name={data_index}
           control={control}
           render={({ field, fieldState: { error } }) => (
             <Form.Item
