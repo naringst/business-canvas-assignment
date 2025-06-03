@@ -1,9 +1,9 @@
-import { Checkbox } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import type { MemberRecord } from '../../../types/record/type';
 import { DEFAULT_FIELDS } from '../../../constants/fields';
 import MoreMenu from './MoreMenu';
 import { MEMBER_RECORDS } from '../../../constants/records';
+import FilterDropdown from './components/FilterDropdown';
 
 type FilteredInfo = Partial<Record<keyof MemberRecord, string[] | null>>;
 
@@ -35,9 +35,11 @@ export const getColumns = ({
   onDelete,
 }: GetColumnsProps): ColumnsType<MemberRecord> => [
   ...DEFAULT_FIELDS.map((field) => {
+    const filters = getColumnFilters(field, MEMBER_RECORDS as unknown as MemberRecord[]);
+
     return {
       ...field,
-      filters: getColumnFilters(field, MEMBER_RECORDS as unknown as MemberRecord[]),
+      filters,
       onFilter: (value: string | number | boolean, record: MemberRecord) => {
         if (field.dataIndex) {
           return String(record[field.dataIndex as keyof MemberRecord]) === String(value);
@@ -45,6 +47,14 @@ export const getColumns = ({
         return false;
       },
       filteredValue: filteredInfo[field.dataIndex] || null,
+      filterDropdown: ({ setSelectedKeys, selectedKeys, confirm }: any) => (
+        <FilterDropdown
+          filters={filters}
+          selectedKeys={selectedKeys}
+          setSelectedKeys={setSelectedKeys}
+          confirm={confirm}
+        />
+      ),
     } as ColumnsType<MemberRecord>[number];
   }),
   {
