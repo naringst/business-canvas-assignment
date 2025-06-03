@@ -1,14 +1,12 @@
-import './App.css'
+import './App.css';
+import RecordManagement from './page/RecordManagement';
 
 function App() {
-
   return (
-   
-      <div>
-        <h1>Hello World</h1>
-      </div>
-
-  )
+    <>
+      <RecordManagement />
+    </>
+  );
 }
 
-export default App
+export default App;
