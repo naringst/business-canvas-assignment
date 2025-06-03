@@ -1,3 +1,4 @@
+import { Checkbox } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import type { MemberRecord } from '../../../types/record/type';
 import { DEFAULT_FIELDS } from '../../../constants/fields';
@@ -16,8 +17,8 @@ interface GetColumnsProps {
 const getColumnFilters = (field: (typeof DEFAULT_FIELDS)[number], records: MemberRecord[]) => {
   if (field.dataIndex === 'isAgreedWithEmail') {
     return [
-      { text: '동의', value: 'true' },
-      { text: '미동의', value: 'false' },
+      { text: '선택됨', value: 'true' },
+      { text: '선택 안함', value: 'false' },
     ];
   }
   const uniqueValues = Array.from(
@@ -55,6 +56,9 @@ export const getColumns = ({
           confirm={confirm}
         />
       ),
+      ...(field.dataIndex === 'isAgreedWithEmail' && {
+        render: (value: boolean) => <Checkbox checked={value} />,
+      }),
     } as ColumnsType<MemberRecord>[number];
   }),
   {
