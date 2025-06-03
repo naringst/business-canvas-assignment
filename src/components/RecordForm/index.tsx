@@ -35,7 +35,7 @@ const RecordForm = ({
       name: '',
       address: '',
       memo: '',
-      joinedAt: new Date(),
+      joinedAt: dayjs().format('YYYY-MM-DD'),
       job: '',
       isAgreedWithEmail: false,
     },
@@ -45,7 +45,7 @@ const RecordForm = ({
     if (initialData) {
       reset({
         ...initialData,
-        joinedAt: dayjs(initialData.joinedAt as string | Date).toDate(),
+        joinedAt: initialData.joinedAt,
       });
     }
   }, [initialData, reset]);

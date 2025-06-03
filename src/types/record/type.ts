@@ -6,7 +6,7 @@ import type { FieldConfig } from '../field/type';
 export interface FieldTypeValueMap {
   [FieldType.TEXT]: string;
   [FieldType.TEXTAREA]: string;
-  [FieldType.DATE]: Date;
+  [FieldType.DATE]: string;
   [FieldType.SELECT]: string;
   [FieldType.CHECKBOX]: boolean;
 }
