@@ -10,6 +10,7 @@ import {
   StyledForm,
   StyledModal,
   CloseButton,
+  FormBody,
 } from './styles';
 import type { MemberRecord } from '../../types/record/type';
 import { DEFAULT_FIELDS } from '../../constants/fields';
@@ -88,13 +89,15 @@ const RecordForm = ({
       </ModalHeader>
 
       <StyledForm onFinish={() => handleSubmit(onFormSubmit)()} layout="vertical">
-        {DEFAULT_FIELDS.map((field) => (
-          <FieldRenderer
-            key={field[FieldProperty.DATA_INDEX]}
-            field={field}
-            control={control as Control<MemberRecord>}
-          />
-        ))}
+        <FormBody>
+          {DEFAULT_FIELDS.map((field) => (
+            <FieldRenderer
+              key={field[FieldProperty.DATA_INDEX]}
+              field={field}
+              control={control as Control<MemberRecord>}
+            />
+          ))}
+        </FormBody>
 
         <FormFooter>
           <Button onClick={handleClose}>취소</Button>

@@ -1,4 +1,4 @@
-import { Modal, Form, Button } from 'antd';
+import { Modal, Form } from 'antd';
 import styled from 'styled-components';
 
 export const StyledModal = styled(Modal)`
@@ -54,9 +54,6 @@ export const ModalTitle = styled.h2`
 `;
 
 export const StyledForm = styled(Form)`
-  padding: 10px 20px;
-  gap: 20px;
-
   .ant-form-item-label {
     height: 28px;
     padding: 0;
@@ -83,9 +80,14 @@ export const StyledForm = styled(Form)`
   }
 `;
 
+export const FormBody = styled.div`
+  padding: 10px 20px 20px 20px;
+  gap: 20px;
+`;
+
 export const FormFooter = styled.div`
+  padding: 12px 16px;
   display: flex;
   justify-content: flex-end;
   gap: 8px;
-  margin-top: 24px;
 `;
