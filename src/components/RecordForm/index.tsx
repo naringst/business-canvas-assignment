@@ -10,6 +10,7 @@ import { FieldProperty } from '../../types/field/enum';
 import { FieldRenderer } from './FieldRenderer';
 import { schema } from './validation';
 import type { RecordFormData } from './types';
+import { CloseOutlined } from '@ant-design/icons';
 
 interface RecordFormProps {
   isOpen: boolean;
@@ -55,8 +56,19 @@ const RecordForm = ({
     onClose();
   };
 
+  const handleClose = () => {
+    reset();
+    onClose();
+  };
+
   return (
-    <StyledModal open={isOpen} onCancel={onClose} footer={null} width={480}>
+    <StyledModal
+      open={isOpen}
+      onCancel={handleClose}
+      footer={null}
+      width={480}
+      closeIcon={<CloseOutlined onClick={handleClose} />}
+    >
       <ModalHeader>
         <ModalTitle>{title}</ModalTitle>
       </ModalHeader>
@@ -71,7 +83,7 @@ const RecordForm = ({
         ))}
 
         <FormFooter>
-          <Button onClick={onClose}>취소</Button>
+          <Button onClick={handleClose}>취소</Button>
           <Button type="primary" htmlType="submit">
             {title === '회원 추가' ? '추가' : '수정'}
           </Button>
