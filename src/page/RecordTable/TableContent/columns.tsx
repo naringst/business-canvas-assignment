@@ -50,6 +50,7 @@ export const getColumns = ({
   {
     title: '',
     key: 'action',
+    width: 48,
     render: (_: unknown, record: MemberRecord) => (
       <MoreMenu record={record} onEdit={onEdit} onDelete={onDelete} />
     ),
