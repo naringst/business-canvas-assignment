@@ -27,8 +27,8 @@ const RecordForm = ({
   title = '회원 추가',
 }: RecordFormProps) => {
   const { control, handleSubmit, reset } = useForm<RecordFormData>({
-    resolver: yupResolver(schema) as any,
-    mode: 'onSubmit',
+    resolver: yupResolver(schema),
+    mode: 'onChange',
     defaultValues: {
       id: '',
       name: '',
