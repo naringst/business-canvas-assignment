@@ -1,10 +1,10 @@
 import './App.css';
-import RecordManagement from './page/RecordManagement';
+import RecordTable from './page/RecordTable';
 
 function App() {
   return (
     <>
-      <RecordManagement />
+      <RecordTable />
     </>
   );
 }
