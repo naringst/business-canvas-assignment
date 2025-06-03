@@ -1,0 +1,85 @@
+import { Button } from 'antd';
+import { useForm, type Control } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect } from 'react';
+import dayjs from 'dayjs';
+import { FormFooter, ModalHeader, ModalTitle, StyledForm, StyledModal } from './styles';
+import type { MemberRecord } from '../../types/record/type';
+import { DEFAULT_FIELDS } from '../../constants/fields';
+import { FieldProperty } from '../../types/field/enum';
+import { FieldRenderer } from './FieldRenderer';
+import { schema } from './validation';
+
+interface RecordFormProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onSubmit: (data: MemberRecord) => void;
+  initialData?: MemberRecord;
+  title?: string;
+}
+
+type FormData = Omit<MemberRecord, 'id'> & { id?: string };
+
+const RecordForm = ({
+  isOpen,
+  onClose,
+  onSubmit,
+  initialData,
+  title = '회원 추가',
+}: RecordFormProps) => {
+  const { control, handleSubmit, reset } = useForm<FormData>({
+    resolver: yupResolver(schema) as any,
+    mode: 'onSubmit',
+    defaultValues: {
+      id: '',
+      name: '',
+      address: '',
+      memo: '',
+      joinedAt: new Date(),
+      job: '',
+      isAgreedWithEmail: false,
+    },
+  });
+
+  useEffect(() => {
+    if (initialData) {
+      reset({
+        ...initialData,
+        joinedAt: dayjs(initialData.joinedAt as string | Date).toDate(),
+      });
+    }
+  }, [initialData, reset]);
+
+  const onFormSubmit = (data: FormData) => {
+    onSubmit(data as MemberRecord);
+    reset();
+    onClose();
+  };
+
+  return (
+    <StyledModal open={isOpen} onCancel={onClose} footer={null} width={480}>
+      <ModalHeader>
+        <ModalTitle>{title}</ModalTitle>
+      </ModalHeader>
+
+      <StyledForm onFinish={() => handleSubmit(onFormSubmit)()} layout="vertical">
+        {DEFAULT_FIELDS.map((field) => (
+          <FieldRenderer
+            key={field[FieldProperty.DATA_INDEX]}
+            field={field}
+            control={control as Control<MemberRecord>}
+          />
+        ))}
+
+        <FormFooter>
+          <Button onClick={onClose}>취소</Button>
+          <Button type="primary" htmlType="submit">
+            {title === '회원 추가' ? '추가' : '수정'}
+          </Button>
+        </FormFooter>
+      </StyledForm>
+    </StyledModal>
+  );
+};
+
+export default RecordForm;
