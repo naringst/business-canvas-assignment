@@ -3,7 +3,14 @@ import { useForm, type Control } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
 import dayjs from 'dayjs';
-import { FormFooter, ModalHeader, ModalTitle, StyledForm, StyledModal } from './styles';
+import {
+  FormFooter,
+  ModalHeader,
+  ModalTitle,
+  StyledForm,
+  StyledModal,
+  CloseButton,
+} from './styles';
 import type { MemberRecord } from '../../types/record/type';
 import { DEFAULT_FIELDS } from '../../constants/fields';
 import { FieldProperty } from '../../types/field/enum';
@@ -62,15 +69,12 @@ const RecordForm = ({
   };
 
   return (
-    <StyledModal
-      open={isOpen}
-      onCancel={handleClose}
-      footer={null}
-      width={480}
-      closeIcon={<CloseOutlined onClick={handleClose} />}
-    >
+    <StyledModal open={isOpen} onCancel={handleClose} footer={null} width={480} closeIcon={false}>
       <ModalHeader>
         <ModalTitle>{title}</ModalTitle>
+        <CloseButton onClick={handleClose}>
+          <CloseOutlined />
+        </CloseButton>
       </ModalHeader>
 
       <StyledForm onFinish={() => handleSubmit(onFormSubmit)()} layout="vertical">
