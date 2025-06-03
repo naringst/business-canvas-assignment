@@ -1,4 +1,4 @@
-import { Table } from 'antd';
+import { ConfigProvider, Table } from 'antd';
 import type { TableProps } from 'antd';
 import { useState } from 'react';
 import type { MemberRecord } from '../../../types/record/type';
@@ -16,7 +16,7 @@ const TableContent = ({ onEdit }: TableContentProps) => {
   >({});
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
 
-  const handleChange: TableProps<any>['onChange'] = (_, filters) => {
+  const handleChange: TableProps<MemberRecord>['onChange'] = (_, filters) => {
     setFilteredInfo(filters as typeof filteredInfo);
   };
 
