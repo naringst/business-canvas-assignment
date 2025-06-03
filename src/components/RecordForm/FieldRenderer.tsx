@@ -94,11 +94,14 @@ export const FieldRenderer = ({ field, control }: FieldRendererProps) => {
           key={data_index}
           name={data_index}
           control={control}
-          render={({ field }) => (
-            <Form.Item>
-              <Checkbox {...field} checked={field.value as boolean}>
-                {title}
-              </Checkbox>
+          render={({ field, fieldState: { error } }) => (
+            <Form.Item
+              label={title}
+              required={required}
+              validateStatus={error ? 'error' : ''}
+              help={error?.message}
+            >
+              <Checkbox {...field} checked={field.value as boolean} />
             </Form.Item>
           )}
         />
