@@ -34,7 +34,12 @@ const RecordForm = ({
   initialData,
   title = '회원 추가',
 }: RecordFormProps) => {
-  const { control, handleSubmit, reset } = useForm<RecordFormData>({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { isValid, isDirty },
+  } = useForm<RecordFormData>({
     resolver: yupResolver(schema),
     mode: 'onChange',
     defaultValues: {
@@ -68,6 +73,8 @@ const RecordForm = ({
     onClose();
   };
 
+  const isSubmitDisabled = !isValid || !isDirty;
+
   return (
     <StyledModal open={isOpen} onCancel={handleClose} footer={null} width={480} closeIcon={false}>
       <ModalHeader>
@@ -88,7 +95,7 @@ const RecordForm = ({
 
         <FormFooter>
           <Button onClick={handleClose}>취소</Button>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" disabled={isSubmitDisabled}>
             {title === '회원 추가' ? '추가' : '수정'}
           </Button>
         </FormFooter>
