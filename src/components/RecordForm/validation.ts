@@ -18,7 +18,7 @@ export const createValidationSchema = (fields: FieldConfig[]) => {
           .max(20, `글자수 20을 초과할 수 없습니다.`)
           .when('$required', {
             is: true,
-            then: (schema) => schema.required(`${fieldLabel}을(를) 입력해주세요`),
+            then: (schema) => schema.required(`${fieldLabel}은 필수값입니다.`),
           });
         break;
       case FieldType.TEXTAREA:
@@ -33,7 +33,7 @@ export const createValidationSchema = (fields: FieldConfig[]) => {
       case FieldType.DATE:
         schema[fieldName] = yup.date().when('$required', {
           is: true,
-          then: (schema) => schema.required(`${fieldLabel}을(를) 선택해주세요`),
+          then: (schema) => schema.required(`${fieldLabel}은 필수값입니다.`),
         });
         break;
       case FieldType.CHECKBOX:
