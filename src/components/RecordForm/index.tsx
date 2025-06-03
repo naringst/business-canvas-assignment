@@ -9,6 +9,7 @@ import { DEFAULT_FIELDS } from '../../constants/fields';
 import { FieldProperty } from '../../types/field/enum';
 import { FieldRenderer } from './FieldRenderer';
 import { schema } from './validation';
+import type { RecordFormData } from './types';
 
 interface RecordFormProps {
   isOpen: boolean;
@@ -18,8 +19,6 @@ interface RecordFormProps {
   title?: string;
 }
 
-type FormData = Omit<MemberRecord, 'id'> & { id?: string };
-
 const RecordForm = ({
   isOpen,
   onClose,
@@ -27,7 +26,7 @@ const RecordForm = ({
   initialData,
   title = '회원 추가',
 }: RecordFormProps) => {
-  const { control, handleSubmit, reset } = useForm<FormData>({
+  const { control, handleSubmit, reset } = useForm<RecordFormData>({
     resolver: yupResolver(schema) as any,
     mode: 'onSubmit',
     defaultValues: {
@@ -50,7 +49,7 @@ const RecordForm = ({
     }
   }, [initialData, reset]);
 
-  const onFormSubmit = (data: FormData) => {
+  const onFormSubmit = (data: RecordFormData) => {
     onSubmit(data as MemberRecord);
     reset();
     onClose();
