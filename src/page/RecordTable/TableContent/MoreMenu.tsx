@@ -4,10 +4,6 @@ import styled from 'styled-components';
 import type { MemberRecord } from '../../../types/record/type';
 
 const StyledDropdown = styled(Dropdown)`
-  .ant-dropdown-menu {
-    min-width: 185px;
-  }
-
   .ant-dropdown-menu-item-danger {
     color: ${(props) => props.theme.colors.dropdown.colorError};
   }
@@ -41,7 +37,11 @@ const MoreMenu = ({ record, onEdit, onDelete }: MoreMenuProps) => {
       menu={menuItems}
       trigger={['click']}
       placement="bottomRight"
-      overlayStyle={{ minWidth: '185px', gap: '10px' }}
+      overlayStyle={{
+        minWidth: '181px',
+        gap: '8px',
+      }}
+      align={{ offset: [0, 8] }}
     >
       <Button type="text" icon={<MoreOutlined />} />
     </StyledDropdown>
