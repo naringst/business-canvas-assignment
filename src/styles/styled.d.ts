@@ -16,5 +16,15 @@ declare module 'styled-components' {
         colorInfo: string;
       };
     };
+    padding: {
+      button: {
+        sm: number;
+        md: number;
+        lg: number;
+      };
+    };
+    borderRadius: {
+      buttonBorderRadius: number;
+    };
   }
 }

@@ -13,4 +13,14 @@ export const theme = {
       colorInfo: '#13c2c2',
     },
   },
+  padding: {
+    button: {
+      sm: 4,
+      md: 8,
+      lg: 16,
+    },
+  },
+  borderRadius: {
+    buttonBorderRadius: 8,
+  },
 };
