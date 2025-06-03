@@ -1,11 +1,46 @@
-import type { FieldConfig } from "../types/field/type";
-
+import type { FieldConfig } from '../types/field/type';
+import { FieldType, FieldProperty } from '../types/field/enum';
 
 export const DEFAULT_FIELDS: FieldConfig[] = [
-  { dataIndex: 'name', title: '이름', type: 'text', required: true },
-  { dataIndex: 'address', title: '주소', type: 'text', required: false },
-  { dataIndex: 'memo', title: '메모', type: 'textarea', required: false },
-  { dataIndex: 'joinedAt', title: '가입일', type: 'date', required: true },
-  { dataIndex: 'job', title: '직업', type: 'select', required: false, selectOptions: [{ label: '개발자', value: 'developer' }, { label: 'PO', value: 'po' }, { label: '디자이너', value: 'designer' } ] },
-  { dataIndex: 'isAgreedWithEmail', title: '이메일 수신 동의', type: 'checkbox', required: false }
-]
+  {
+    [FieldProperty.TYPE]: FieldType.TEXT,
+    [FieldProperty.DATA_INDEX]: 'name',
+    [FieldProperty.TITLE]: '이름',
+    [FieldProperty.REQUIRED]: true,
+  },
+  {
+    [FieldProperty.TYPE]: FieldType.TEXT,
+    [FieldProperty.DATA_INDEX]: 'address',
+    [FieldProperty.TITLE]: '주소',
+    [FieldProperty.REQUIRED]: false,
+  },
+  {
+    [FieldProperty.TYPE]: FieldType.TEXTAREA,
+    [FieldProperty.DATA_INDEX]: 'memo',
+    [FieldProperty.TITLE]: '메모',
+    [FieldProperty.REQUIRED]: false,
+  },
+  {
+    [FieldProperty.TYPE]: FieldType.DATE,
+    [FieldProperty.DATA_INDEX]: 'joinedAt',
+    [FieldProperty.TITLE]: '가입일',
+    [FieldProperty.REQUIRED]: true,
+  },
+  {
+    [FieldProperty.TYPE]: FieldType.SELECT,
+    [FieldProperty.DATA_INDEX]: 'job',
+    [FieldProperty.TITLE]: '직업',
+    [FieldProperty.REQUIRED]: false,
+    [FieldProperty.SELECT_OPTIONS]: [
+      { label: '개발자', value: 'developer' },
+      { label: 'PO', value: 'po' },
+      { label: '디자이너', value: 'designer' },
+    ],
+  },
+  {
+    [FieldProperty.TYPE]: FieldType.CHECKBOX,
+    [FieldProperty.DATA_INDEX]: 'isAgreedWithEmail',
+    [FieldProperty.TITLE]: '이메일 수신 동의',
+    [FieldProperty.REQUIRED]: false,
+  },
+];
