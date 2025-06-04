@@ -32,7 +32,7 @@ export const createValidationSchema = (fields: FieldConfig[]) => {
           });
         break;
       case FieldType.DATE:
-        schema[fieldName] = yup.date().when('$required', {
+        schema[fieldName] = yup.string().when('$required', {
           is: () => isRequired,
           then: (schema) => schema.required(`${fieldLabel}은 필수값입니다.`),
         });

@@ -81,6 +81,7 @@ export const FieldRenderer = ({ field, control }: FieldRendererProps) => {
               <DatePicker
                 {...field}
                 value={field.value ? dayjs(field.value as string) : null}
+                onChange={(date) => field.onChange(date ? date.format('YYYY-MM-DD') : null)}
                 style={{ width: '160px' }}
                 suffixIcon={<CalendarOutlined />}
               />
