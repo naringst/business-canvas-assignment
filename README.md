@@ -10,7 +10,6 @@ Re:catch 프론트엔드 과제전형을 위해 제작된 사용자 관리 시�
 - **React**
 - **react-hook-form** – 폼 상태 및 유효성 검사
 - **styled-components** – 컴포넌트 기반 스타일링
-- **day.js** – 날짜 처리
 
 ---
 
