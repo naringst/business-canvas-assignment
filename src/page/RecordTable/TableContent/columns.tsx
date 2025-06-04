@@ -6,8 +6,7 @@ import MoreMenu from './MoreMenu';
 import { MEMBER_RECORDS } from '../../../constants/records';
 import FilterDropdown from './components/FilterDropdown';
 import { FieldProperty } from '../../../types/field/enum';
-import { FieldType } from '../../../types/field/enum';
-import type { SelectField } from '../../../types/field/type';
+import { isSelectField } from '../../../utils/type-guards';
 
 type FilteredInfo = Partial<Record<keyof MemberRecord, string[] | null>>;
 
@@ -15,10 +14,6 @@ interface GetColumnsProps {
   filteredInfo: FilteredInfo;
   onEdit: (record: MemberRecord) => void;
   onDelete: (record: MemberRecord) => void;
-}
-
-function isSelectField(field: any): field is SelectField {
-  return field[FieldProperty.TYPE] === FieldType.SELECT;
 }
 
 const getColumnFilters = (field: (typeof DEFAULT_FIELDS)[number], records: MemberRecord[]) => {

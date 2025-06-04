@@ -2,11 +2,12 @@ import { Form, Input, DatePicker, Checkbox, Select } from 'antd';
 import { CalendarOutlined } from '@ant-design/icons';
 import { Controller } from 'react-hook-form';
 import type { Control } from 'react-hook-form';
-import type { FieldConfig, SelectField } from '../../types/field/type';
+import type { FieldConfig } from '../../types/field/type';
 import { FieldProperty, FieldType } from '../../types/field/enum';
 import dayjs from 'dayjs';
 import type { MemberRecord } from '../../types/record/type';
 import type { TextAreaProps } from 'antd/es/input/TextArea';
+import { isSelectField } from '../../utils/type-guards';
 
 interface FieldRendererProps {
   field: FieldConfig;
@@ -18,10 +19,6 @@ export const FieldRenderer = ({ field, control }: FieldRendererProps) => {
   const data_index = field[FieldProperty.DATA_INDEX];
   const type = field[FieldProperty.TYPE];
   const required = field[FieldProperty.REQUIRED];
-
-  function isSelectField(field: FieldConfig): field is SelectField {
-    return field[FieldProperty.TYPE] === FieldType.SELECT;
-  }
 
   let options: { label: string; value: string }[] | undefined;
   if (isSelectField(field)) {
