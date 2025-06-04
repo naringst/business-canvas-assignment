@@ -43,9 +43,6 @@ const RecordForm = ({
   } = useForm<RecordFormData>({
     resolver: yupResolver(schema),
     mode: 'onChange',
-    context: {
-      required: true,
-    },
     defaultValues: {
       id: '',
       name: '',

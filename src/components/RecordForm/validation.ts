@@ -10,6 +10,7 @@ export const createValidationSchema = (fields: FieldConfig[]) => {
     const fieldType = field[FieldProperty.TYPE];
     const fieldName = field[FieldProperty.DATA_INDEX];
     const fieldLabel = field[FieldProperty.TITLE];
+    const isRequired = field[FieldProperty.REQUIRED];
 
     switch (fieldType) {
       case FieldType.TEXT:
@@ -17,7 +18,7 @@ export const createValidationSchema = (fields: FieldConfig[]) => {
           .string()
           .max(20, `글자수 20을 초과할 수 없습니다.`)
           .when('$required', {
-            is: true,
+            is: () => isRequired,
             then: (schema) => schema.required(`${fieldLabel}은 필수값입니다.`),
           });
         break;
@@ -26,13 +27,13 @@ export const createValidationSchema = (fields: FieldConfig[]) => {
           .string()
           .max(50, `글자수 50을 초과할 수 없습니다.`)
           .when('$required', {
-            is: true,
+            is: () => isRequired,
             then: (schema) => schema.required(`${fieldLabel}을(를) 입력해주세요`),
           });
         break;
       case FieldType.DATE:
         schema[fieldName] = yup.date().when('$required', {
-          is: true,
+          is: () => isRequired,
           then: (schema) => schema.required(`${fieldLabel}은 필수값입니다.`),
         });
         break;
@@ -41,7 +42,7 @@ export const createValidationSchema = (fields: FieldConfig[]) => {
         break;
       case FieldType.SELECT:
         schema[fieldName] = yup.string().when('$required', {
-          is: true,
+          is: () => isRequired,
           then: (schema) => schema.required(`${fieldLabel}을(를) 선택해주세요`),
         });
         break;
