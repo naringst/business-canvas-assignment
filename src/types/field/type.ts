@@ -4,14 +4,14 @@ import type { FieldType, FieldProperty } from './enum';
 export interface TextField {
   [FieldProperty.TYPE]: typeof FieldType.TEXT;
   [FieldProperty.DATA_INDEX]: string;
-  [FieldProperty.TITLE]: string;
+  [FieldProperty.LABEL]: string;
   [FieldProperty.REQUIRED]: boolean;
 }
 
 export interface SelectField {
   [FieldProperty.TYPE]: typeof FieldType.SELECT;
   [FieldProperty.DATA_INDEX]: string;
-  [FieldProperty.TITLE]: string;
+  [FieldProperty.LABEL]: string;
   [FieldProperty.REQUIRED]: boolean;
   [FieldProperty.SELECT_OPTIONS]?: { label: string; value: string }[];
 }
@@ -19,21 +19,21 @@ export interface SelectField {
 export interface CheckboxField {
   [FieldProperty.TYPE]: typeof FieldType.CHECKBOX;
   [FieldProperty.DATA_INDEX]: string;
-  [FieldProperty.TITLE]: string;
+  [FieldProperty.LABEL]: string;
   [FieldProperty.REQUIRED]: boolean;
 }
 
 export interface DateField {
   [FieldProperty.TYPE]: typeof FieldType.DATE;
   [FieldProperty.DATA_INDEX]: string;
-  [FieldProperty.TITLE]: string;
+  [FieldProperty.LABEL]: string;
   [FieldProperty.REQUIRED]: boolean;
 }
 
 export interface TextareaField {
   [FieldProperty.TYPE]: typeof FieldType.TEXTAREA;
   [FieldProperty.DATA_INDEX]: string;
-  [FieldProperty.TITLE]: string;
+  [FieldProperty.LABEL]: string;
   [FieldProperty.REQUIRED]: boolean;
 }
 

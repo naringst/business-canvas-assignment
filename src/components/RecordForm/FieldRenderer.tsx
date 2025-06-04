@@ -14,7 +14,7 @@ interface FieldRendererProps {
 }
 
 export const FieldRenderer = ({ field, control }: FieldRendererProps) => {
-  const title = field[FieldProperty.TITLE];
+  const title = field[FieldProperty.LABEL];
   const data_index = field[FieldProperty.DATA_INDEX];
   const type = field[FieldProperty.TYPE];
   const required = field[FieldProperty.REQUIRED];

@@ -5,31 +5,31 @@ export const DEFAULT_FIELDS: FieldConfig[] = [
   {
     [FieldProperty.TYPE]: FieldType.TEXT,
     [FieldProperty.DATA_INDEX]: 'name',
-    [FieldProperty.TITLE]: '이름',
+    [FieldProperty.LABEL]: '이름',
     [FieldProperty.REQUIRED]: true,
   },
   {
     [FieldProperty.TYPE]: FieldType.TEXT,
     [FieldProperty.DATA_INDEX]: 'address',
-    [FieldProperty.TITLE]: '주소',
+    [FieldProperty.LABEL]: '주소',
     [FieldProperty.REQUIRED]: false,
   },
   {
     [FieldProperty.TYPE]: FieldType.TEXTAREA,
     [FieldProperty.DATA_INDEX]: 'memo',
-    [FieldProperty.TITLE]: '메모',
+    [FieldProperty.LABEL]: '메모',
     [FieldProperty.REQUIRED]: false,
   },
   {
     [FieldProperty.TYPE]: FieldType.DATE,
     [FieldProperty.DATA_INDEX]: 'joinedAt',
-    [FieldProperty.TITLE]: '가입일',
+    [FieldProperty.LABEL]: '가입일',
     [FieldProperty.REQUIRED]: true,
   },
   {
     [FieldProperty.TYPE]: FieldType.SELECT,
     [FieldProperty.DATA_INDEX]: 'job',
-    [FieldProperty.TITLE]: '직업',
+    [FieldProperty.LABEL]: '직업',
     [FieldProperty.REQUIRED]: false,
     [FieldProperty.SELECT_OPTIONS]: [
       { label: '개발자', value: 'developer' },
@@ -40,7 +40,7 @@ export const DEFAULT_FIELDS: FieldConfig[] = [
   {
     [FieldProperty.TYPE]: FieldType.CHECKBOX,
     [FieldProperty.DATA_INDEX]: 'isAgreedWithEmail',
-    [FieldProperty.TITLE]: '이메일 수신 동의',
+    [FieldProperty.LABEL]: '이메일 수신 동의',
     [FieldProperty.REQUIRED]: false,
   },
 ];

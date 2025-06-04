@@ -46,15 +46,18 @@ export const getColumns = ({
     const filters = getColumnFilters(field, MEMBER_RECORDS as unknown as MemberRecord[]);
 
     return {
-      ...field,
+      title: field[FieldProperty.LABEL],
+      dataIndex: field[FieldProperty.DATA_INDEX],
       filters,
       onFilter: (value: string | number | boolean, record: MemberRecord) => {
-        if (field.dataIndex) {
-          return String(record[field.dataIndex as keyof MemberRecord]) === String(value);
+        if (field[FieldProperty.DATA_INDEX]) {
+          return (
+            String(record[field[FieldProperty.DATA_INDEX] as keyof MemberRecord]) === String(value)
+          );
         }
         return false;
       },
-      filteredValue: filteredInfo[field.dataIndex] || null,
+      filteredValue: filteredInfo[field[FieldProperty.DATA_INDEX]] || null,
       filterDropdown: ({ setSelectedKeys, selectedKeys, confirm }: any) => (
         <FilterDropdown
           filters={filters}
@@ -63,13 +66,12 @@ export const getColumns = ({
           confirm={confirm}
         />
       ),
-      ...(field.dataIndex === 'isAgreedWithEmail' && {
+      ...(field[FieldProperty.DATA_INDEX] === 'isAgreedWithEmail' && {
         render: (value: boolean) => <Checkbox checked={value} />,
       }),
-      ...(field.dataIndex === 'job' && {
+      ...(field[FieldProperty.DATA_INDEX] === 'job' && {
         render: (value: string) => {
           const jobField = DEFAULT_FIELDS.find((f) => f[FieldProperty.DATA_INDEX] === 'job');
-
           if (jobField && isSelectField(jobField)) {
             const option = jobField[FieldProperty.SELECT_OPTIONS]?.find(
               (opt) => opt.value === value

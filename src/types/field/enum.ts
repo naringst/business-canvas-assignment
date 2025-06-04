@@ -12,7 +12,7 @@ export type FieldType = (typeof FieldType)[keyof typeof FieldType];
 export const FieldProperty = {
   TYPE: 'type',
   DATA_INDEX: 'dataIndex',
-  TITLE: 'title',
+  LABEL: 'label',
   REQUIRED: 'required',
   SELECT_OPTIONS: 'selectOptions',
 } as const;
