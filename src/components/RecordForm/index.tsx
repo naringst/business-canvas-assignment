@@ -3,6 +3,7 @@ import { useForm, type Control } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
 import dayjs from 'dayjs';
+import { v4 as uuidv4 } from 'uuid';
 import {
   FormFooter,
   ModalHeader,
@@ -64,7 +65,10 @@ const RecordForm = ({
   }, [initialData, reset]);
 
   const onFormSubmit = (data: RecordFormData) => {
-    onSubmit(data as MemberRecord);
+    onSubmit({
+      ...data,
+      id: data.id || uuidv4(),
+    } as MemberRecord);
     reset();
     onClose();
   };
