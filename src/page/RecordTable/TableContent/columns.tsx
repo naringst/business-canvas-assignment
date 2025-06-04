@@ -7,8 +7,8 @@ import { FieldProperty } from '@/types/field/enum';
 import type { MemberRecord } from '@/types/record/type';
 import { isSelectField } from '@/utils/type-guards';
 
-import FilterDropdown from './components/FilterDropdown';
-import MoreMenu from './MoreMenu';
+import FilterDropdown from './RecordFilterDropdown/FilterDropdown';
+import RecordMoreMenu from './RecordMoreMenu';
 
 type FilteredInfo = Partial<Record<keyof MemberRecord, string[] | null>>;
 
@@ -84,8 +84,8 @@ export const getColumns = ({
     title: '',
     key: 'action',
     width: 48,
-    render: (_: unknown, record: MemberRecord) => (
-      <MoreMenu record={record} onEdit={onEdit} onDelete={onDelete} />
+    render: (record: MemberRecord) => (
+      <RecordMoreMenu record={record} onEdit={onEdit} onDelete={onDelete} />
     ),
   },
 ];

@@ -49,7 +49,7 @@ const RecordTable = () => {
   };
 
   return (
-    <div>
+    <>
       <TableHeader onClickAdd={openAddForm} />
       <TableContent onEdit={openEditForm} onDelete={handleDeleteRecord} records={records} />
       <RecordForm
@@ -59,7 +59,7 @@ const RecordTable = () => {
         initialData={selectedRecord}
         onSubmit={formMode === FORM_MODES.ADD ? handleAddRecord : handleUpdateRecord}
       />
-    </div>
+    </>
   );
 };
 
