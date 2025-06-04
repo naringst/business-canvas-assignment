@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import RecordForm from '../../components/RecordForm';
 import type { MemberRecord } from '../../types/record/type';
+import { useStorage } from '../../hooks/useStorage';
 
 import TableHeader from './TableHeader';
 import TableContent from './TableContent';
@@ -10,28 +11,32 @@ const RecordTable = () => {
   const [isEditFormOpen, setIsEditFormOpen] = useState(false);
   const [selectedRecord, setSelectedRecord] = useState<MemberRecord | null>(null);
 
-  const handleAddRecord = (data: MemberRecord) => {
+  const { records, addRecord, updateRecord, deleteRecord } = useStorage();
+
+  const handleAddRecord = async (data: MemberRecord) => {
+    await addRecord(data);
     setIsAddFormOpen(false);
-    console.log('Add record:', data);
   };
 
-  // 수정 버튼 클릭 시 폼을 여는 함수
+  const handleUpdateRecord = async (data: MemberRecord) => {
+    await updateRecord(data);
+    setIsEditFormOpen(false);
+    setSelectedRecord(null);
+  };
+
+  const handleDeleteRecord = async (record: MemberRecord) => {
+    await deleteRecord(record.id);
+  };
+
   const openEditForm = (record: MemberRecord) => {
     setSelectedRecord(record);
     setIsEditFormOpen(true);
   };
 
-  // 폼에서 수정 완료 후 호출되는 함수
-  const handleUpdateRecord = (data: MemberRecord) => {
-    setIsEditFormOpen(false);
-    setSelectedRecord(null);
-    console.log('Edit record:', data);
-  };
-
   return (
     <div>
       <TableHeader onClickAdd={() => setIsAddFormOpen(true)} />
-      <TableContent onEdit={openEditForm} />
+      <TableContent onEdit={openEditForm} onDelete={handleDeleteRecord} records={records} />
 
       <RecordForm
         isOpen={isAddFormOpen}
