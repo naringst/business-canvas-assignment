@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import RecordForm from '../../components/RecordForm';
-import type { MemberRecord } from '../../types/record/type';
-import { useStorage } from '../../hooks/storage/useStorage';
 
-import TableHeader from './TableHeader';
+import RecordForm from '@/components/RecordForm';
+import { useStorage } from '@/hooks/storage/useStorage';
+import type { MemberRecord } from '@/types/record/type';
+
 import TableContent from './TableContent';
+import TableHeader from './TableHeader';
 
 const RecordTable = () => {
   const [isAddFormOpen, setIsAddFormOpen] = useState(false);

@@ -1,4 +1,4 @@
-import type { MemberRecord } from '../record/type';
+import type { MemberRecord } from '@/types/record/type';
 
 export interface Storage {
   // NOTE 로컬스토리지 저장 시에도 비동기로 통일하여 처리.

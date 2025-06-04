@@ -1,6 +1,6 @@
-import type { DEFAULT_FIELDS } from '../../constants/fields';
-import type { FieldProperty, FieldType } from '../field/enum';
-import type { FieldConfig } from '../field/type';
+import type { DEFAULT_FIELDS } from '@/constants/fields';
+import type { FieldProperty, FieldType } from '@/types/field/enum';
+import type { FieldConfig } from '@/types/field/type';
 
 // NOTE 각 필드타입에 다른 value map 타입 정의
 export interface FieldTypeValueMap {

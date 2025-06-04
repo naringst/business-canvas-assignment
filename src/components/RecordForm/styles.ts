@@ -1,4 +1,4 @@
-import { Modal, Form } from 'antd';
+import { Form, Modal } from 'antd';
 import styled from 'styled-components';
 
 export const StyledModal = styled(Modal)`

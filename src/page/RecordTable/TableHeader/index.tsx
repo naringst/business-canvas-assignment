@@ -1,5 +1,6 @@
 import { PlusOutlined } from '@ant-design/icons';
-import { TableHeaderContainer, TableHeaderTitle, TableHeaderAddButton } from './styles';
+
+import { TableHeaderAddButton, TableHeaderContainer, TableHeaderTitle } from './styles';
 
 const TableHeader = ({ onClickAdd }: { onClickAdd: () => void }) => {
   return (

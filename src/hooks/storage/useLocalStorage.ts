@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import type { MemberRecord } from '../../types/record/type';
-import { MEMBER_RECORDS } from '../../constants/records';
+
+import { MEMBER_RECORDS } from '@/constants/records';
+import type { MemberRecord } from '@/types/record/type';
 
 const STORAGE_KEY = 'member-records';
 

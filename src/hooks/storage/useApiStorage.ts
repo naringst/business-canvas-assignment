@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import type { MemberRecord } from '../../types/record/type';
-import { MEMBER_RECORDS } from '../../constants/records';
-import { api } from '../../api/axios';
+
+import { api } from '@/api/axios';
+import { MEMBER_RECORDS } from '@/constants/records';
+import type { MemberRecord } from '@/types/record/type';
 
 export const useApiStorage = () => {
   const [records, setRecords] = useState<MemberRecord[]>([]);

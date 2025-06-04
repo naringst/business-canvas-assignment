@@ -1,5 +1,5 @@
-import type { FieldConfig } from '../types/field/type';
-import { FieldType, FieldProperty } from '../types/field/enum';
+import { FieldProperty, FieldType } from '@/types/field/enum';
+import type { FieldConfig } from '@/types/field/type';
 
 export const DEFAULT_FIELDS: FieldConfig[] = [
   {

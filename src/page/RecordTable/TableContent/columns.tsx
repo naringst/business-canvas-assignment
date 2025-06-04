@@ -1,12 +1,14 @@
 import { Checkbox } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import type { MemberRecord } from '../../../types/record/type';
-import { DEFAULT_FIELDS } from '../../../constants/fields';
-import MoreMenu from './MoreMenu';
-import { MEMBER_RECORDS } from '../../../constants/records';
+
+import { DEFAULT_FIELDS } from '@/constants/fields';
+import { MEMBER_RECORDS } from '@/constants/records';
+import { FieldProperty } from '@/types/field/enum';
+import type { MemberRecord } from '@/types/record/type';
+import { isSelectField } from '@/utils/type-guards';
+
 import FilterDropdown from './components/FilterDropdown';
-import { FieldProperty } from '../../../types/field/enum';
-import { isSelectField } from '../../../utils/type-guards';
+import MoreMenu from './MoreMenu';
 
 type FilteredInfo = Partial<Record<keyof MemberRecord, string[] | null>>;
 

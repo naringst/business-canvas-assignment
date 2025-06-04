@@ -1,7 +1,9 @@
 import { Table } from 'antd';
 import type { TableProps } from 'antd';
+
 import { useState } from 'react';
-import type { MemberRecord } from '../../../types/record/type';
+
+import type { MemberRecord } from '@/types/record/type';
 
 import { getColumns } from './columns';
 

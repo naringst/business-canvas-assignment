@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
-import type { MemberRecord } from '../../types/record/type';
-import { useLocalStorage } from './useLocalStorage';
-import { useApiStorage } from './useApiStorage';
+import { useEffect, useState } from 'react';
+
+import { useApiStorage } from '@/hooks/storage/useApiStorage';
+import { useLocalStorage } from '@/hooks/storage/useLocalStorage';
+import type { MemberRecord } from '@/types/record/type';
 
 export const useStorage = () => {
   const [records, setRecords] = useState<MemberRecord[]>([]);

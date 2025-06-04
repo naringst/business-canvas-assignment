@@ -1,25 +1,29 @@
-import { Button } from 'antd';
-import { useForm, type Control } from 'react-hook-form';
+import { CloseOutlined } from '@ant-design/icons';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect } from 'react';
+import { Button } from 'antd';
 import dayjs from 'dayjs';
 import { v4 as uuidv4 } from 'uuid';
+
+import { useEffect } from 'react';
+
+import { type Control, useForm } from 'react-hook-form';
+
+import { DEFAULT_FIELDS } from '@/constants/fields';
+import { FieldProperty } from '@/types/field/enum';
+import type { MemberRecord } from '@/types/record/type';
+
+import { FieldRenderer } from './FieldRenderer';
 import {
+  CloseButton,
+  FormBody,
   FormFooter,
   ModalHeader,
   ModalTitle,
   StyledForm,
   StyledModal,
-  CloseButton,
-  FormBody,
 } from './styles';
-import type { MemberRecord } from '../../types/record/type';
-import { DEFAULT_FIELDS } from '../../constants/fields';
-import { FieldProperty } from '../../types/field/enum';
-import { FieldRenderer } from './FieldRenderer';
-import { schema } from './validation';
 import type { RecordFormData } from './types';
-import { CloseOutlined } from '@ant-design/icons';
+import { schema } from './validation';
 
 interface RecordFormProps {
   isOpen: boolean;

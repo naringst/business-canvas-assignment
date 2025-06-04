@@ -1,4 +1,4 @@
-import type { MemberRecord } from '../types/record/type';
+import type { MemberRecord } from '@/types/record/type';
 
 export const MEMBER_RECORDS: MemberRecord[] = [
   {

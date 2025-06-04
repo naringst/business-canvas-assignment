@@ -1,4 +1,4 @@
-import type { FieldType, FieldProperty } from './enum';
+import type { FieldProperty, FieldType } from '@/types/field/enum';
 
 // NOTE FieldConfig 타입 정의
 export interface TextField {

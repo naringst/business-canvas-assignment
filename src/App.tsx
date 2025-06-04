@@ -1,5 +1,6 @@
+import RecordTable from '@/page/RecordTable';
+
 import './App.css';
-import RecordTable from './page/RecordTable';
 
 function App() {
   return (

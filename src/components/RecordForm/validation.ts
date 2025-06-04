@@ -1,7 +1,8 @@
 import * as yup from 'yup';
-import type { FieldConfig } from '../../types/field/type';
-import { DEFAULT_FIELDS } from '../../constants/fields';
-import { FieldProperty, FieldType } from '../../types/field/enum';
+
+import { DEFAULT_FIELDS } from '@/constants/fields';
+import { FieldProperty, FieldType } from '@/types/field/enum';
+import type { FieldConfig } from '@/types/field/type';
 
 export const createValidationSchema = (fields: FieldConfig[]) => {
   const schema: Record<string, yup.Schema<any>> = {};
@@ -9,7 +10,7 @@ export const createValidationSchema = (fields: FieldConfig[]) => {
   fields.forEach((field) => {
     const fieldType = field[FieldProperty.TYPE];
     const fieldName = field[FieldProperty.DATA_INDEX];
-    const fieldLabel = field[FieldProperty.TITLE];
+    const fieldLabel = field[FieldProperty.LABEL];
     const isRequired = field[FieldProperty.REQUIRED];
 
     switch (fieldType) {

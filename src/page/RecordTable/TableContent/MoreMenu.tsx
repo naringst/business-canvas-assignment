@@ -1,7 +1,8 @@
-import { Button, Dropdown } from 'antd';
 import { MoreOutlined } from '@ant-design/icons';
+import { Button, Dropdown } from 'antd';
 import styled from 'styled-components';
-import type { MemberRecord } from '../../../types/record/type';
+
+import type { MemberRecord } from '@/types/record/type';
 
 const StyledDropdown = styled(Dropdown)`
   .ant-dropdown-menu-item-danger {
