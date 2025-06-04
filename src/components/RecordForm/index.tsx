@@ -1,6 +1,4 @@
-import { CloseOutlined } from '@ant-design/icons';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button } from 'antd';
 import dayjs from 'dayjs';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -12,16 +10,10 @@ import { FORM_MODES } from '@/types/form/enum';
 import type { FormMode } from '@/types/form/enum';
 import type { MemberRecord } from '@/types/record/type';
 
-import { FieldRenderer } from './FieldRenderer';
-import {
-  CloseButton,
-  FormBody,
-  FormFooter,
-  ModalHeader,
-  ModalTitle,
-  StyledForm,
-  StyledModal,
-} from './styles';
+import FormBody from './components/FormBody';
+import FormFooter from './components/FormFooter';
+import FormHeader from './components/FormHeader';
+import { StyledForm, StyledModal } from './styles';
 import type { RecordFormData } from './types';
 import { schema } from './validation';
 
@@ -83,30 +75,10 @@ const RecordForm = ({ isOpen, onClose, onSubmit, initialData, formMode }: Record
 
   return (
     <StyledModal open={isOpen} onCancel={handleClose} footer={null} width={480} closeIcon={false}>
-      <ModalHeader>
-        <ModalTitle>{title}</ModalTitle>
-        <CloseButton onClick={handleClose}>
-          <CloseOutlined />
-        </CloseButton>
-      </ModalHeader>
-
       <StyledForm onFinish={() => handleSubmit(onFormSubmit)()} layout="vertical">
-        <FormBody>
-          {DEFAULT_FIELDS.map((field) => (
-            <FieldRenderer
-              key={field[FieldProperty.DATA_INDEX]}
-              field={field}
-              control={control as Control<MemberRecord>}
-            />
-          ))}
-        </FormBody>
-
-        <FormFooter>
-          <Button onClick={handleClose}>취소</Button>
-          <Button type="primary" htmlType="submit" disabled={isSubmitDisabled}>
-            {title === '회원 추가' ? '추가' : '수정'}
-          </Button>
-        </FormFooter>
+        <FormHeader title={title} handleClose={handleClose} />
+        <FormBody control={control as Control<MemberRecord>} />
+        <FormFooter isSubmitDisabled={isSubmitDisabled} handleSubmit={handleSubmit(onFormSubmit)} />
       </StyledForm>
     </StyledModal>
   );

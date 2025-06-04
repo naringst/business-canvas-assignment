@@ -80,12 +80,12 @@ export const StyledForm = styled(Form)`
   }
 `;
 
-export const FormBody = styled.div`
+export const FormBodyContainer = styled.div`
   padding: 10px 20px 20px 20px;
   gap: 20px;
 `;
 
-export const FormFooter = styled.div`
+export const FormFooterContainer = styled.div`
   padding: 12px 16px;
   display: flex;
   justify-content: flex-end;
