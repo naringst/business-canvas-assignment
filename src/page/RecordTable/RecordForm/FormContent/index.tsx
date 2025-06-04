@@ -39,7 +39,11 @@ const FormContent = ({
     <FormContainer onFinish={() => handleSubmit(onFormSubmit)()} layout="vertical">
       <FormHeader title={title} handleClose={handleClose} />
       <FormBody control={control as Control<MemberRecord>} />
-      <FormFooter isSubmitDisabled={isSubmitDisabled} handleClose={handleClose} />
+      <FormFooter
+        isSubmitDisabled={isSubmitDisabled}
+        handleClose={handleClose}
+        handleSubmit={() => handleSubmit(onFormSubmit)()}
+      />
     </FormContainer>
   );
 };
