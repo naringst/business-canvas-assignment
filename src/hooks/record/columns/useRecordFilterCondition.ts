@@ -4,7 +4,7 @@ import type { MemberRecord } from '@/types/record/type';
 
 type FieldType = (typeof DEFAULT_FIELDS)[number];
 
-export const useColumnFilterCondition = (field: FieldType, record: MemberRecord) => {
+export const useRecordFilterCondition = (field: FieldType, record: MemberRecord) => {
   const dataIndex = field[FieldProperty.DATA_INDEX];
   if (!dataIndex) {
     return () => false;

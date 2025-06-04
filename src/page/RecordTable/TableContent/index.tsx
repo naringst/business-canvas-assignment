@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 import type { FilteredInfo, MemberRecord } from '@/types/record/type';
 
-import { getColumns } from './components/TableColumns';
+import { getRecordColumns } from './components/RecordTableColumns';
 
 interface TableContentProps {
   onEdit: (record: MemberRecord) => void;
@@ -21,7 +21,7 @@ const TableContent = ({ onEdit, onDelete, records }: TableContentProps) => {
     setFilteredInfo(filters as FilteredInfo);
   };
 
-  const columns = getColumns({
+  const columns = getRecordColumns({
     filteredInfo,
     onEdit,
     onDelete,

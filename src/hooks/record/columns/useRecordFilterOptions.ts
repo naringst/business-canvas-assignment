@@ -1,7 +1,7 @@
 import { DEFAULT_FIELDS } from '@/constants/fields';
 import type { MemberRecord } from '@/types/record/type';
 
-export const useColumnFilterOptions = (
+export const useRecordFilterOptions = (
   field: (typeof DEFAULT_FIELDS)[number],
   records: MemberRecord[]
 ) => {
