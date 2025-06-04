@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import RecordForm from '../../components/RecordForm';
 import type { MemberRecord } from '../../types/record/type';
-import { useStorage } from '../../hooks/useStorage';
+import { useStorage } from '../../hooks/storage/useStorage';
 
 import TableHeader from './TableHeader';
 import TableContent from './TableContent';
