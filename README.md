@@ -6,8 +6,8 @@ Re:catch 프론트엔드 과제전형을 위해 제작된 사용자 관리 시�
 ---
 
 ## 🛠️ 기술 스택
-
-- **React**
+- **React**, **Typescript**, **Ant Design**
+- **Pnpm** - 패키지 관리
 - **react-hook-form** – 폼 상태 및 유효성 검사
 - **styled-components** – 컴포넌트 기반 스타일링
 
@@ -70,8 +70,10 @@ Re:catch 프론트엔드 과제전형을 위해 제작된 사용자 관리 시�
 - 역할 기반 폴더 구조로 관심사를 분리하였습니다.
 - 복잡한 로직은 훅으로 분리하여 재사용성과 가독성을 높였습니다.
 
-  - `useRecordFormModal`: 모달 열기/닫기 상태 관리
-  - `useRecordFormFields`: 폼 입력값 상태 및 리셋 처리
+  - `useRecordManager`: 전체 Record 비즈니스 로직 관리
+  - `useRecordForm~`: Record 생성/수정 form 관리 관련 로직
+  - `useRecordFilter~`: Record 필터링 기능 관련 로직
+  - `use~Storage`: Record 저장 기능 관련 로직
 
 ### ✅ 확장성과 타입 안전성
 
@@ -91,7 +93,7 @@ Re:catch 프론트엔드 과제전형을 위해 제작된 사용자 관리 시�
 
 ### ✅ 사용자 경험
 
-- 폼이 열릴 때마다 `react-hook-form`의 `reset()`으로 초기화되어 이전 입력이 남지 않도록 처리
+- 폼이 저장될 때마다 `react-hook-form`의 `reset()`으로 초기화되어 이전 입력이 남지 않도록 처리
 - 저장 버튼에 `htmlType="submit"`을 지정하여 Enter 키로도 저장 가능
 
 ---
