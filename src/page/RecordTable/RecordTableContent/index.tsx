@@ -17,10 +17,6 @@ const RecordTableContent = ({ onEdit, onDelete, records }: RecordTableContentPro
   const [filteredInfo, setFilteredInfo] = useState<FilteredInfo>({});
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
 
-  const handleChange: TableProps<MemberRecord>['onChange'] = (_, filters) => {
-    setFilteredInfo(filters as FilteredInfo);
-  };
-
   const columns = getRecordColumns({
     filteredInfo,
     onEdit,
@@ -31,10 +27,13 @@ const RecordTableContent = ({ onEdit, onDelete, records }: RecordTableContentPro
     selectedRowKeys,
     onChange: (selectedRowKeys: React.Key[]) => {
       setSelectedRowKeys(selectedRowKeys);
-
       // NOTE 필요하다면 여기서 선택된 레코드들에 대한 동작 추가 처리 가능
       // 2nd param : selectedRows: MemberRecord[],
     },
+  };
+
+  const handleChange: TableProps<MemberRecord>['onChange'] = (_, filters) => {
+    setFilteredInfo(filters as FilteredInfo);
   };
 
   return (

@@ -10,8 +10,10 @@ interface FormFooterProps {
 const FormFooter = ({ isSubmitDisabled, handleClose }: FormFooterProps) => {
   return (
     <FormFooterContainer>
-      <Button onClick={handleClose}>취소</Button>
-      <Button type="primary" htmlType="submit" disabled={isSubmitDisabled}>
+      <Button htmlType="button" onClick={handleClose}>
+        취소
+      </Button>
+      <Button form="recordForm" type="primary" htmlType="submit" disabled={isSubmitDisabled}>
         저장
       </Button>
     </FormFooterContainer>

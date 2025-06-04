@@ -25,6 +25,7 @@ const RecordForm = ({ isOpen, onClose, onSubmit, initialData, formMode }: Record
         initialData={initialData}
         onSubmit={onSubmit}
         onClose={onClose}
+        isOpen={isOpen}
       />
     </Modal>
   );

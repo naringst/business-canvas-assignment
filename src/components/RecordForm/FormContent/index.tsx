@@ -15,15 +15,24 @@ interface FormContentProps {
   initialData?: MemberRecord | null;
   onSubmit: (data: MemberRecord) => void;
   onClose: () => void;
+  isOpen: boolean;
 }
 
-const FormContent = ({ title, formMode, initialData, onSubmit, onClose }: FormContentProps) => {
+const FormContent = ({
+  title,
+  formMode,
+  initialData,
+  onSubmit,
+  onClose,
+  isOpen,
+}: FormContentProps) => {
   const { control, handleSubmit, onFormSubmit, handleClose, isSubmitDisabled } =
     useRecordFormFields({
       formMode,
       initialData,
       onSubmit,
       onClose,
+      isOpen,
     });
 
   return (

@@ -17,6 +17,7 @@ interface UseRecordFormFieldsProps {
   initialData?: MemberRecord | null;
   onSubmit: (data: MemberRecord) => void;
   onClose: () => void;
+  isOpen: boolean;
 }
 
 export const useRecordFormFields = ({
@@ -24,6 +25,7 @@ export const useRecordFormFields = ({
   initialData,
   onSubmit,
   onClose,
+  isOpen,
 }: UseRecordFormFieldsProps) => {
   const { resolver } = useRecordFormValidation();
 
@@ -52,20 +54,26 @@ export const useRecordFormFields = ({
         ...initialData,
         joinedAt: initialData.joinedAt,
       });
+      return;
     }
   }, [initialData, reset, formMode]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      reset();
+    }
+  }, [isOpen, reset]);
 
   const onFormSubmit = (data: RecordFormData) => {
     onSubmit({
       ...data,
       id: data.id || uuidv4(),
     } as MemberRecord);
-    reset();
     onClose();
+    reset();
   };
 
   const handleClose = () => {
-    reset();
     onClose();
   };
 
