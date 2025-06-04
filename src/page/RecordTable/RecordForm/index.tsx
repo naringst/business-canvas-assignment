@@ -2,7 +2,7 @@ import { FORM_MODES } from '@/types/form/enum';
 import type { FormMode } from '@/types/form/enum';
 import type { MemberRecord } from '@/types/record/type';
 
-import Modal from '../Modal';
+import Modal from '../../../components/Modal';
 import FormContent from './FormContent';
 
 interface RecordFormProps {

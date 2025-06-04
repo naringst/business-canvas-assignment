@@ -1,5 +1,5 @@
-import RecordForm from '@/components/RecordForm';
 import { useRecordManager } from '@/hooks/record/useRecordManager';
+import RecordForm from '@/page/RecordTable/RecordForm';
 
 import RecordTableContent from './RecordTableContent';
 import RecordTableHeader from './RecordTableHeader';
