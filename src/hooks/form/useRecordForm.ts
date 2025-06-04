@@ -42,7 +42,7 @@ export const useRecordForm = ({ formMode, initialData, onSubmit, onClose }: UseR
   });
 
   useEffect(() => {
-    if (formMode === FORM_MODES.ADD && initialData) {
+    if (formMode === FORM_MODES.EDIT && initialData) {
       reset({
         ...initialData,
         joinedAt: initialData.joinedAt,
