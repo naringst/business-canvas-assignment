@@ -29,8 +29,11 @@ const TableContent = ({ onEdit, onDelete, records }: TableContentProps) => {
 
   const rowSelection = {
     selectedRowKeys,
-    onChange: (newSelectedRowKeys: React.Key[]) => {
-      setSelectedRowKeys(newSelectedRowKeys);
+    onChange: (selectedRowKeys: React.Key[]) => {
+      setSelectedRowKeys(selectedRowKeys);
+
+      // NOTE 필요하다면 여기서 선택된 레코드들에 대한 동작 추가 처리 가능
+      // 2nd param : selectedRows: MemberRecord[],
     },
   };
 
@@ -41,6 +44,7 @@ const TableContent = ({ onEdit, onDelete, records }: TableContentProps) => {
       dataSource={records}
       onChange={handleChange}
       pagination={false}
+      rowKey="id"
     />
   );
 };
