@@ -1,16 +1,9 @@
-import dayjs from 'dayjs';
-import { v4 as uuidv4 } from 'uuid';
+import { type Control } from 'react-hook-form';
 
-import { useEffect } from 'react';
-
-import { type Control, useForm } from 'react-hook-form';
-
-import { useFormValidation } from '@/hooks/form/useFormValidation';
-import { FORM_MODES } from '@/types/form/enum';
+import { useRecordForm } from '@/hooks/form/useRecordForm';
 import type { FormMode } from '@/types/form/enum';
 import type { MemberRecord } from '@/types/record/type';
 
-import type { RecordFormData } from '../../../types/form/types';
 import FormBody from './FormBody/FormBody';
 import FormFooter from './FormFooter/FormFooter';
 import FormHeader from './FormHeader/FormHeader';
@@ -25,51 +18,12 @@ interface FormContentProps {
 }
 
 const FormContent = ({ title, formMode, initialData, onSubmit, onClose }: FormContentProps) => {
-  const { resolver } = useFormValidation();
-
-  const {
-    control,
-    handleSubmit,
-    reset,
-    formState: { isValid, isDirty },
-  } = useForm<RecordFormData>({
-    resolver,
-    mode: 'onChange',
-    defaultValues: {
-      id: '',
-      name: '',
-      address: '',
-      memo: '',
-      joinedAt: dayjs().format('YYYY-MM-DD'),
-      job: '',
-      isAgreedWithEmail: false,
-    },
+  const { control, handleSubmit, onFormSubmit, handleClose, isSubmitDisabled } = useRecordForm({
+    formMode,
+    initialData,
+    onSubmit,
+    onClose,
   });
-
-  useEffect(() => {
-    if (formMode === FORM_MODES.ADD && initialData) {
-      reset({
-        ...initialData,
-        joinedAt: initialData.joinedAt,
-      });
-    }
-  }, [initialData, reset, formMode]);
-
-  const onFormSubmit = (data: RecordFormData) => {
-    onSubmit({
-      ...data,
-      id: data.id || uuidv4(),
-    } as MemberRecord);
-    reset();
-    onClose();
-  };
-
-  const handleClose = () => {
-    reset();
-    onClose();
-  };
-
-  const isSubmitDisabled = !isValid || !isDirty;
 
   return (
     <FormContainer onFinish={() => handleSubmit(onFormSubmit)()} layout="vertical">
