@@ -7,13 +7,13 @@ import type { FilteredInfo, MemberRecord } from '@/types/record/type';
 
 import { getRecordColumns } from './components/RecordTableColumns';
 
-interface TableContentProps {
+interface RecordTableContentProps {
   onEdit: (record: MemberRecord) => void;
   onDelete: (record: MemberRecord) => void;
   records: MemberRecord[];
 }
 
-const TableContent = ({ onEdit, onDelete, records }: TableContentProps) => {
+const RecordTableContent = ({ onEdit, onDelete, records }: RecordTableContentProps) => {
   const [filteredInfo, setFilteredInfo] = useState<FilteredInfo>({});
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
 
@@ -49,4 +49,4 @@ const TableContent = ({ onEdit, onDelete, records }: TableContentProps) => {
   );
 };
 
-export default TableContent;
+export default RecordTableContent;

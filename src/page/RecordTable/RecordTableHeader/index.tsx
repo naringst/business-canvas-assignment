@@ -2,7 +2,7 @@ import { PlusOutlined } from '@ant-design/icons';
 
 import { TableHeaderAddButton, TableHeaderContainer, TableHeaderTitle } from './styles';
 
-const TableHeader = ({ onClickAdd }: { onClickAdd: () => void }) => {
+const RecordTableHeader = ({ onClickAdd }: { onClickAdd: () => void }) => {
   return (
     <TableHeaderContainer>
       <TableHeaderTitle>회원 목록</TableHeaderTitle>
@@ -13,4 +13,4 @@ const TableHeader = ({ onClickAdd }: { onClickAdd: () => void }) => {
   );
 };
 
-export default TableHeader;
+export default RecordTableHeader;

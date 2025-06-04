@@ -6,8 +6,8 @@ import { FORM_MODES } from '@/types/form/enum';
 import type { FormMode } from '@/types/form/enum';
 import type { MemberRecord } from '@/types/record/type';
 
-import TableContent from './TableContent';
-import TableHeader from './TableHeader';
+import RecordTableContent from './RecordTableContent';
+import RecordTableHeader from './RecordTableHeader';
 
 const RecordTable = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -50,8 +50,8 @@ const RecordTable = () => {
 
   return (
     <>
-      <TableHeader onClickAdd={openAddForm} />
-      <TableContent onEdit={openEditForm} onDelete={handleDeleteRecord} records={records} />
+      <RecordTableHeader onClickAdd={openAddForm} />
+      <RecordTableContent onEdit={openEditForm} onDelete={handleDeleteRecord} records={records} />
       <RecordForm
         isOpen={isFormOpen}
         onClose={handleCloseForm}
