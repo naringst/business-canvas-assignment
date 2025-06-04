@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { FORM_MODES } from '@/types/form/enum';
 import type { FormMode } from '@/types/form/enum';
@@ -18,22 +18,22 @@ export const useRecordFormModal = (): UseRecordFormModalReturn => {
   const [formMode, setFormMode] = useState<FormMode>('add');
   const [selectedRecord, setSelectedRecord] = useState<MemberRecord | null>(null);
 
-  const openAddForm = () => {
+  const openAddForm = useCallback(() => {
     setFormMode(FORM_MODES.ADD);
     setSelectedRecord(null);
     setIsFormOpen(true);
-  };
+  }, []);
 
-  const openEditForm = (record: MemberRecord) => {
+  const openEditForm = useCallback((record: MemberRecord) => {
     setFormMode(FORM_MODES.EDIT);
     setSelectedRecord(record);
     setIsFormOpen(true);
-  };
+  }, []);
 
-  const handleCloseForm = () => {
+  const handleCloseForm = useCallback(() => {
     setIsFormOpen(false);
     setSelectedRecord(null);
-  };
+  }, []);
 
   return {
     isFormOpen,

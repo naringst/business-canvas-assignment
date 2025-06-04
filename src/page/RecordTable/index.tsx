@@ -22,13 +22,9 @@ const RecordTable = () => {
     handleDelete,
   } = useRecordManager();
 
-  const handleAddClick = () => {
-    openAddForm();
-  };
-
   return (
     <>
-      <RecordTableHeader onClickAdd={handleAddClick} />
+      <RecordTableHeader onClickAdd={openAddForm} />
       <RecordTableContent onEdit={openEditForm} onDelete={handleDelete} records={records} />
       <RecordForm
         isOpen={isFormOpen}

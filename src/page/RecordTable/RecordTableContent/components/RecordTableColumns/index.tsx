@@ -1,5 +1,7 @@
 import type { ColumnsType } from 'antd/es/table';
 
+import { useMemo } from 'react';
+
 import { DEFAULT_FIELDS } from '@/constants/fields';
 import { MEMBER_RECORDS } from '@/constants/records';
 import { FieldProperty } from '@/types/field/enum';
@@ -66,9 +68,19 @@ export const getRecordColumns = ({
   filteredInfo,
   onEdit,
   onDelete,
-}: GetRecordColumnsProps): ColumnsType<MemberRecord> => [
-  ...DEFAULT_FIELDS.map((field) =>
-    createRecordFieldColumn(field, filteredInfo, MEMBER_RECORDS as unknown as MemberRecord[])
-  ),
-  createRecordActionColumn(onEdit, onDelete),
-];
+}: GetRecordColumnsProps): ColumnsType<MemberRecord> => {
+  const fieldColumns = useMemo(
+    () =>
+      DEFAULT_FIELDS.map((field) =>
+        createRecordFieldColumn(field, filteredInfo, MEMBER_RECORDS as unknown as MemberRecord[])
+      ),
+    [filteredInfo]
+  );
+
+  const actionColumn = useMemo(
+    () => createRecordActionColumn(onEdit, onDelete),
+    [onEdit, onDelete]
+  );
+
+  return [...fieldColumns, actionColumn];
+};
