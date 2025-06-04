@@ -3,9 +3,9 @@ import type { TableProps } from 'antd';
 
 import { useState } from 'react';
 
-import type { MemberRecord } from '@/types/record/type';
+import type { FilteredInfo, MemberRecord } from '@/types/record/type';
 
-import { getColumns } from './columns';
+import { getColumns } from './components/TableColumns';
 
 interface TableContentProps {
   onEdit: (record: MemberRecord) => void;
@@ -14,13 +14,11 @@ interface TableContentProps {
 }
 
 const TableContent = ({ onEdit, onDelete, records }: TableContentProps) => {
-  const [filteredInfo, setFilteredInfo] = useState<
-    Partial<Record<keyof MemberRecord, string[] | null>>
-  >({});
+  const [filteredInfo, setFilteredInfo] = useState<FilteredInfo>({});
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
 
   const handleChange: TableProps<MemberRecord>['onChange'] = (_, filters) => {
-    setFilteredInfo(filters as typeof filteredInfo);
+    setFilteredInfo(filters as FilteredInfo);
   };
 
   const columns = getColumns({

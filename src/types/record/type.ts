@@ -21,3 +21,5 @@ export type MemberRecordFromFields<F extends readonly FieldConfig[]> = {
 };
 
 export type MemberRecord = MemberRecordFromFields<typeof DEFAULT_FIELDS> & { id: string };
+
+export type FilteredInfo = Partial<Record<keyof MemberRecord, string[] | null>>;

@@ -37,7 +37,7 @@ interface FilterDropdownProps {
   confirm: () => void;
 }
 
-const FilterDropdown = ({
+const RecordFilterDropdown = ({
   filters,
   selectedKeys,
   setSelectedKeys,
@@ -64,4 +64,4 @@ const FilterDropdown = ({
   );
 };
 
-export default FilterDropdown;
+export default RecordFilterDropdown;
