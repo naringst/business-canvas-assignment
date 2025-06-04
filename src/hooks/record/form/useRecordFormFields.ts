@@ -10,7 +10,7 @@ import type { FormMode } from '@/types/form/enum';
 import type { RecordFormData } from '@/types/form/types';
 import type { MemberRecord } from '@/types/record/type';
 
-import { useFormValidation } from './useFormValidation';
+import { useRecordFormValidation } from './useRecordFormValidation';
 
 interface UseRecordFormFieldsProps {
   formMode: FormMode;
@@ -25,7 +25,7 @@ export const useRecordFormFields = ({
   onSubmit,
   onClose,
 }: UseRecordFormFieldsProps) => {
-  const { resolver } = useFormValidation();
+  const { resolver } = useRecordFormValidation();
 
   const {
     control,

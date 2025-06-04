@@ -56,7 +56,7 @@ const createValidationSchema = (fields: FieldConfig[]) => {
   return yup.object(schema);
 };
 
-export const useFormValidation = () => {
+export const useRecordFormValidation = () => {
   const schema = useMemo(() => createValidationSchema(DEFAULT_FIELDS), []);
 
   return {
