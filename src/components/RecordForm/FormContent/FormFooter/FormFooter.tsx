@@ -4,13 +4,13 @@ import { FormFooterContainer } from './styles';
 
 interface FormFooterProps {
   isSubmitDisabled: boolean;
-  handleSubmit: () => void;
+  handleClose: () => void;
 }
 
-const FormFooter = ({ isSubmitDisabled, handleSubmit }: FormFooterProps) => {
+const FormFooter = ({ isSubmitDisabled, handleClose }: FormFooterProps) => {
   return (
     <FormFooterContainer>
-      <Button onClick={handleSubmit}>취소</Button>
+      <Button onClick={handleClose}>취소</Button>
       <Button type="primary" htmlType="submit" disabled={isSubmitDisabled}>
         저장
       </Button>
