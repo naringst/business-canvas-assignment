@@ -1,7 +1,6 @@
 import { CloseOutlined } from '@ant-design/icons';
 
-import { CloseButton } from '../styles';
-import { ModalHeader, ModalTitle } from '../styles';
+import { CloseButton, FormHeaderContainer, FormTitle } from './styles';
 
 interface FormHeaderProps {
   title: string;
@@ -9,12 +8,12 @@ interface FormHeaderProps {
 }
 const FormHeader = ({ title, handleClose }: FormHeaderProps) => {
   return (
-    <ModalHeader>
-      <ModalTitle>{title}</ModalTitle>
+    <FormHeaderContainer>
+      <FormTitle>{title}</FormTitle>
       <CloseButton onClick={handleClose}>
         <CloseOutlined />
       </CloseButton>
-    </ModalHeader>
+    </FormHeaderContainer>
   );
 };
 

@@ -1,6 +1,6 @@
 import { Button } from 'antd';
 
-import { FormFooterContainer } from '../styles';
+import { FormFooterContainer } from './styles';
 
 interface FormFooterProps {
   isSubmitDisabled: boolean;

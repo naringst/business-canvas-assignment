@@ -7,10 +7,9 @@ import { Controller } from 'react-hook-form';
 import type { Control } from 'react-hook-form';
 
 import { FieldProperty, FieldType } from '@/types/field/enum';
+import type { FieldConfig } from '@/types/field/type';
 import type { MemberRecord } from '@/types/record/type';
 import { isSelectField } from '@/utils/type-guards';
-
-import type { FieldConfig } from '../../types/field/type';
 
 interface FieldRendererProps {
   field: FieldConfig;

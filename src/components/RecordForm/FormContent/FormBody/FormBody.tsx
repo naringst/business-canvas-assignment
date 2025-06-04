@@ -4,8 +4,8 @@ import { DEFAULT_FIELDS } from '@/constants/fields';
 import { FieldProperty } from '@/types/field/enum';
 import type { MemberRecord } from '@/types/record/type';
 
-import { FieldRenderer } from '../FieldRenderer';
-import { FormBodyContainer } from '../styles';
+import { FieldRenderer } from './FieldRenderer';
+import { FormBodyContainer } from './styles';
 
 interface FormBodyProps {
   control: Control<MemberRecord>;
