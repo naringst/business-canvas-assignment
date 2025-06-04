@@ -25,7 +25,9 @@ export const useLocalStorage = () => {
   };
 
   const updateRecord = async (record: MemberRecord) => {
-    const newRecords = records.map((r) => (r.id === record.id ? record : r));
+    const newRecords = records.map((originalRecord) =>
+      originalRecord.id === record.id ? record : originalRecord
+    );
     await saveRecords(newRecords);
   };
 
