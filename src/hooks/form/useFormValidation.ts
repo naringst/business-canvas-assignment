@@ -1,10 +1,13 @@
 import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+import { useMemo } from 'react';
 
 import { DEFAULT_FIELDS } from '@/constants/fields';
 import { FieldProperty, FieldType } from '@/types/field/enum';
 import type { FieldConfig } from '@/types/field/type';
 
-export const createValidationSchema = (fields: FieldConfig[]) => {
+const createValidationSchema = (fields: FieldConfig[]) => {
   const schema: Record<string, yup.Schema<any>> = {};
 
   fields.forEach((field) => {
@@ -53,5 +56,11 @@ export const createValidationSchema = (fields: FieldConfig[]) => {
   return yup.object(schema);
 };
 
-export const schema = createValidationSchema(DEFAULT_FIELDS);
-export type FormData = yup.InferType<typeof schema>;
+export const useFormValidation = () => {
+  const schema = useMemo(() => createValidationSchema(DEFAULT_FIELDS), []);
+
+  return {
+    resolver: yupResolver(schema),
+    schema,
+  };
+};

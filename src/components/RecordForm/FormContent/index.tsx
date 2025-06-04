@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import dayjs from 'dayjs';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -6,12 +5,12 @@ import { useEffect } from 'react';
 
 import { type Control, useForm } from 'react-hook-form';
 
+import { useFormValidation } from '@/hooks/form/useFormValidation';
 import { FORM_MODES } from '@/types/form/enum';
 import type { FormMode } from '@/types/form/enum';
 import type { MemberRecord } from '@/types/record/type';
 
 import type { RecordFormData } from '../../../types/form/types';
-import { schema } from '../validation';
 import FormBody from './FormBody/FormBody';
 import FormFooter from './FormFooter/FormFooter';
 import FormHeader from './FormHeader/FormHeader';
@@ -26,13 +25,15 @@ interface FormContentProps {
 }
 
 const FormContent = ({ title, formMode, initialData, onSubmit, onClose }: FormContentProps) => {
+  const { resolver } = useFormValidation();
+
   const {
     control,
     handleSubmit,
     reset,
     formState: { isValid, isDirty },
   } = useForm<RecordFormData>({
-    resolver: yupResolver(schema),
+    resolver,
     mode: 'onChange',
     defaultValues: {
       id: '',
