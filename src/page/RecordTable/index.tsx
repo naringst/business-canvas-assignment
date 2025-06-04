@@ -1,63 +1,37 @@
-import { useState } from 'react';
-
 import RecordForm from '@/components/RecordForm';
-import { useStorage } from '@/hooks/storage/useStorage';
-import { FORM_MODES } from '@/types/form/enum';
-import type { FormMode } from '@/types/form/enum';
-import type { MemberRecord } from '@/types/record/type';
+import { useRecordManager } from '@/hooks/record/useRecordManager';
 
 import RecordTableContent from './RecordTableContent';
 import RecordTableHeader from './RecordTableHeader';
 
 const RecordTable = () => {
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [formMode, setFormMode] = useState<FormMode>('add');
-  const [selectedRecord, setSelectedRecord] = useState<MemberRecord | null>(null);
+  const {
+    // Form Modal State
+    isFormOpen,
+    formMode,
+    selectedRecord,
 
-  const { records, addRecord, updateRecord, deleteRecord } = useStorage();
+    // Records
+    records,
 
-  const handleAddRecord = async (data: MemberRecord) => {
-    await addRecord(data);
-    setIsFormOpen(false);
-  };
-
-  const handleUpdateRecord = async (data: MemberRecord) => {
-    await updateRecord(data);
-    setIsFormOpen(false);
-    setSelectedRecord(null);
-  };
-
-  const handleDeleteRecord = async (record: MemberRecord) => {
-    await deleteRecord(record.id);
-  };
-
-  const openAddForm = () => {
-    setFormMode(FORM_MODES.ADD);
-    setSelectedRecord(null);
-    setIsFormOpen(true);
-  };
-
-  const openEditForm = (record: MemberRecord) => {
-    setFormMode(FORM_MODES.EDIT);
-    setSelectedRecord(record);
-    setIsFormOpen(true);
-  };
-
-  const handleCloseForm = () => {
-    setIsFormOpen(false);
-    setSelectedRecord(null);
-  };
+    // Actions
+    openAddForm,
+    openEditForm,
+    handleCloseForm,
+    handleSubmit,
+    handleDelete,
+  } = useRecordManager();
 
   return (
     <>
       <RecordTableHeader onClickAdd={openAddForm} />
-      <RecordTableContent onEdit={openEditForm} onDelete={handleDeleteRecord} records={records} />
+      <RecordTableContent onEdit={openEditForm} onDelete={handleDelete} records={records} />
       <RecordForm
         isOpen={isFormOpen}
         onClose={handleCloseForm}
         formMode={formMode}
         initialData={selectedRecord}
-        onSubmit={formMode === FORM_MODES.ADD ? handleAddRecord : handleUpdateRecord}
+        onSubmit={handleSubmit}
       />
     </>
   );

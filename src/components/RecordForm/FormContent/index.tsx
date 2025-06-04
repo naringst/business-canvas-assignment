@@ -1,6 +1,6 @@
 import { type Control } from 'react-hook-form';
 
-import { useRecordForm } from '@/hooks/form/useRecordForm';
+import { useRecordFormFields } from '@/hooks/record/form/useRecordFormFields';
 import type { FormMode } from '@/types/form/enum';
 import type { MemberRecord } from '@/types/record/type';
 
@@ -18,12 +18,13 @@ interface FormContentProps {
 }
 
 const FormContent = ({ title, formMode, initialData, onSubmit, onClose }: FormContentProps) => {
-  const { control, handleSubmit, onFormSubmit, handleClose, isSubmitDisabled } = useRecordForm({
-    formMode,
-    initialData,
-    onSubmit,
-    onClose,
-  });
+  const { control, handleSubmit, onFormSubmit, handleClose, isSubmitDisabled } =
+    useRecordFormFields({
+      formMode,
+      initialData,
+      onSubmit,
+      onClose,
+    });
 
   return (
     <FormContainer onFinish={() => handleSubmit(onFormSubmit)()} layout="vertical">

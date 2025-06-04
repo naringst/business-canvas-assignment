@@ -12,14 +12,19 @@ import type { MemberRecord } from '@/types/record/type';
 
 import { useFormValidation } from './useFormValidation';
 
-interface UseRecordFormProps {
+interface UseRecordFormFieldsProps {
   formMode: FormMode;
   initialData?: MemberRecord | null;
   onSubmit: (data: MemberRecord) => void;
   onClose: () => void;
 }
 
-export const useRecordForm = ({ formMode, initialData, onSubmit, onClose }: UseRecordFormProps) => {
+export const useRecordFormFields = ({
+  formMode,
+  initialData,
+  onSubmit,
+  onClose,
+}: UseRecordFormFieldsProps) => {
   const { resolver } = useFormValidation();
 
   const {
