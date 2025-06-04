@@ -2,26 +2,28 @@ import { useState } from 'react';
 
 import RecordForm from '@/components/RecordForm';
 import { useStorage } from '@/hooks/storage/useStorage';
+import { FORM_MODES } from '@/types/form/enum';
+import type { FormMode } from '@/types/form/enum';
 import type { MemberRecord } from '@/types/record/type';
 
 import TableContent from './TableContent';
 import TableHeader from './TableHeader';
 
 const RecordTable = () => {
-  const [isAddFormOpen, setIsAddFormOpen] = useState(false);
-  const [isEditFormOpen, setIsEditFormOpen] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [formMode, setFormMode] = useState<FormMode>('add');
   const [selectedRecord, setSelectedRecord] = useState<MemberRecord | null>(null);
 
   const { records, addRecord, updateRecord, deleteRecord } = useStorage();
 
   const handleAddRecord = async (data: MemberRecord) => {
     await addRecord(data);
-    setIsAddFormOpen(false);
+    setIsFormOpen(false);
   };
 
   const handleUpdateRecord = async (data: MemberRecord) => {
     await updateRecord(data);
-    setIsEditFormOpen(false);
+    setIsFormOpen(false);
     setSelectedRecord(null);
   };
 
@@ -29,32 +31,33 @@ const RecordTable = () => {
     await deleteRecord(record.id);
   };
 
+  const openAddForm = () => {
+    setFormMode(FORM_MODES.ADD);
+    setSelectedRecord(null);
+    setIsFormOpen(true);
+  };
+
   const openEditForm = (record: MemberRecord) => {
+    setFormMode(FORM_MODES.EDIT);
     setSelectedRecord(record);
-    setIsEditFormOpen(true);
+    setIsFormOpen(true);
+  };
+
+  const handleCloseForm = () => {
+    setIsFormOpen(false);
+    setSelectedRecord(null);
   };
 
   return (
     <div>
-      <TableHeader onClickAdd={() => setIsAddFormOpen(true)} />
+      <TableHeader onClickAdd={openAddForm} />
       <TableContent onEdit={openEditForm} onDelete={handleDeleteRecord} records={records} />
-
       <RecordForm
-        isOpen={isAddFormOpen}
-        onClose={() => setIsAddFormOpen(false)}
-        onSubmit={handleAddRecord}
-        title="회원 추가"
-      />
-
-      <RecordForm
-        isOpen={isEditFormOpen}
-        onClose={() => {
-          setIsEditFormOpen(false);
-          setSelectedRecord(null);
-        }}
-        onSubmit={handleUpdateRecord}
-        initialData={selectedRecord ?? undefined}
-        title="회원 수정"
+        isOpen={isFormOpen}
+        onClose={handleCloseForm}
+        formMode={formMode}
+        initialData={selectedRecord}
+        onSubmit={formMode === FORM_MODES.ADD ? handleAddRecord : handleUpdateRecord}
       />
     </div>
   );

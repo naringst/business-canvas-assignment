@@ -8,8 +8,8 @@ import { useEffect } from 'react';
 
 import { type Control, useForm } from 'react-hook-form';
 
-import { DEFAULT_FIELDS } from '@/constants/fields';
-import { FieldProperty } from '@/types/field/enum';
+import { FORM_MODES } from '@/types/form/enum';
+import type { FormMode } from '@/types/form/enum';
 import type { MemberRecord } from '@/types/record/type';
 
 import { FieldRenderer } from './FieldRenderer';
@@ -29,17 +29,14 @@ interface RecordFormProps {
   isOpen: boolean;
   onClose: () => void;
   onSubmit: (data: MemberRecord) => void;
-  initialData?: MemberRecord;
-  title?: string;
+  formMode: FormMode;
+  initialData?: MemberRecord | null;
 }
 
-const RecordForm = ({
-  isOpen,
-  onClose,
-  onSubmit,
-  initialData,
-  title = '회원 추가',
-}: RecordFormProps) => {
+const RecordForm = ({ isOpen, onClose, onSubmit, initialData, formMode }: RecordFormProps) => {
+  const mode = formMode === FORM_MODES.ADD ? '추가' : '수정';
+  const title = `회원 ${mode}`;
+
   const {
     control,
     handleSubmit,
@@ -60,7 +57,7 @@ const RecordForm = ({
   });
 
   useEffect(() => {
-    if (initialData) {
+    if (formMode === FORM_MODES.ADD && initialData) {
       reset({
         ...initialData,
         joinedAt: initialData.joinedAt,
